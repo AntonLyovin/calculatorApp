@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 public class PreScoringServiceImpl implements PreScoringService {
     @Override
     public List<LoanOfferDto> calculatePreOffer(BigDecimal amount, Integer term, String firstName, String lastName, String middleName,
-                                                String email, LocalDate birthdate,String passportSeries,String passportNumber) {
+                                                String email, LocalDate birthdate, String passportSeries, String passportNumber) {
         List<CalcDto> calcDTOList = prepareDtoList(amount, term);
         log.info("Предоставление кредитных предложений");
         return calcDTOList.stream()

@@ -1,8 +1,6 @@
 package calculatorApp.calculator.model.dto;
 
 import calculatorApp.calculator.util.Adult;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;

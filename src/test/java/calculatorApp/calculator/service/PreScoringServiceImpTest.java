@@ -1,20 +1,12 @@
 package calculatorApp.calculator.service;
 
-import calculatorApp.calculator.controller.PreScoringController;
-import calculatorApp.calculator.controller.ScoringController;
 import calculatorApp.calculator.model.dto.LoanOfferDto;
-import lombok.Builder;
-import lombok.Data;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -33,6 +25,7 @@ public class PreScoringServiceImpTest {
         MockitoAnnotations.openMocks(this);
         preScoringService = new PreScoringServiceImpl();
     }
+
     @Test
     void calculatePreOffer_ShouldReturnSortedLoanOffers() {
         BigDecimal amount = BigDecimal.valueOf(100000);
@@ -64,6 +57,7 @@ public class PreScoringServiceImpTest {
             assertTrue(offer.getTerm() > 0);
         }
     }
+
     @Test
     void testCalculatePreOffer_ReturnsCorrectOffers() {
         // Входные параметры

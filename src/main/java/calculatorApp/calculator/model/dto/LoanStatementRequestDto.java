@@ -1,6 +1,5 @@
 package calculatorApp.calculator.model.dto;
 
-import calculatorApp.calculator.util.Adult;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -39,7 +38,6 @@ public class LoanStatementRequestDto {
     @Pattern(regexp = "^[a-z0-9A-Z_!#$%&'*+/=?`{|}~^.-]+@[a-z0-9A-Z.-]+$", message="Неправильный формат Email")
     private String email;
     @Schema(description = "Дата рождения (гггг-мм-дд)")
-    @Adult
     private LocalDate birthdate;
     @Schema(description="Серия паспорта - 4 цифры")
     @Pattern(regexp="^\\d{4}$", message="Серия паспорта должна состоять из 4 цифр")

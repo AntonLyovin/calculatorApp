@@ -1,7 +1,7 @@
 package calculatorApp.calculator.model.dto;
 
-import calculatorApp.calculator.util.EmploymentStatusEnum;
-import calculatorApp.calculator.util.Position;
+import calculatorApp.calculator.model.enumerated.EmploymentStatusEnum;
+import calculatorApp.calculator.model.enumerated.Position;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

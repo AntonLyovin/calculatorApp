@@ -1,4 +1,4 @@
-package calculatorApp.calculator.util;
+package calculatorApp.calculator.model.enumerated;
 
 public enum Position {
     DIRECTOR,

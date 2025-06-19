@@ -1,23 +1,19 @@
 package calculatorApp.calculator.service;
 
-import calculatorApp.calculator.controller.ScoringController;
 import calculatorApp.calculator.model.dto.CreditDto;
 import calculatorApp.calculator.model.dto.EmploymentDto;
 import calculatorApp.calculator.model.dto.PaymentScheduleElementDto;
 import calculatorApp.calculator.model.dto.ScoringDataDto;
-import calculatorApp.calculator.util.EmploymentStatusEnum;
-import calculatorApp.calculator.util.Gender;
-import calculatorApp.calculator.util.MartialStatus;
-import calculatorApp.calculator.util.Position;
+import calculatorApp.calculator.model.enumerated.EmploymentStatusEnum;
+import calculatorApp.calculator.model.enumerated.Gender;
+import calculatorApp.calculator.model.enumerated.MartialStatus;
+import calculatorApp.calculator.model.enumerated.Position;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

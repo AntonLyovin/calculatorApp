@@ -22,7 +22,4 @@ public class CreditDto {
     private Boolean isSalaryClient;
     private List<PaymentScheduleElementDto> paymentSchedule;
 
-    public void setSchedule(List<PaymentScheduleElementDto> schedule) {
-
-    }
 }

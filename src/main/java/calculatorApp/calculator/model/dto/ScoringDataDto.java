@@ -1,8 +1,7 @@
 package calculatorApp.calculator.model.dto;
 
-import calculatorApp.calculator.util.Adult;
-import calculatorApp.calculator.util.Gender;
-import calculatorApp.calculator.util.MartialStatus;
+import calculatorApp.calculator.model.enumerated.Gender;
+import calculatorApp.calculator.model.enumerated.MartialStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -40,7 +39,6 @@ public class ScoringDataDto {
      private String middleName;
      private Gender gender;
      @Schema(description = "Дата рождения (гггг-мм-дд)")
-     @Adult
      private LocalDate birthdate;
      @Schema(description="Серия паспорта - 4 цифры")
      @Pattern(regexp="^\\d{4}$", message="Серия паспорта должна состоять из 4 цифр")

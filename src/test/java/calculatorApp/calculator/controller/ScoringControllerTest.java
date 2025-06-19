@@ -98,4 +98,15 @@ public class ScoringControllerTest {
                         .content(requestBody))
                 .andExpect(status().isBadRequest());
     }
+    @Test
+    void calculatePreOfferTest() throws Exception {
+        mockMvc.perform(post("/calculator/offers)
+                .andExpect(status().isOk());
+    }
+    @Test
+    void calculatePreOfferValidationTest() throws Exception{
+        mockMvc.perform(post("/preScoring/calculator/offers/{amount}/{term}/{firstName}/{lastName}/{middleName}/{email}/{birthdate}/{passportSeries}/{passportNumber}",
+                        amount, term, firstName, lastName, middleName, email, birthdate, passportSeries, passportNumber))
+                .andExpect(status().isBadRequest());
+    }
 }

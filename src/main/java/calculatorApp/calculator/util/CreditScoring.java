@@ -12,6 +12,7 @@ import java.math.MathContext;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.UUID;
 
 @Slf4j
 public class CreditScoring {
@@ -31,7 +32,7 @@ public class CreditScoring {
         if (calcDto.getIsSalaryClient()) {
             annualRate = annualRate.subtract(BigDecimal.valueOf(1));
         }
-        
+
 
         BigDecimal monthlyRate = annualRate.divide(BigDecimal.valueOf(12), MathContext.DECIMAL128).divide(BigDecimal.valueOf(100), MathContext.DECIMAL128).setScale(2, RoundingMode.HALF_UP);
 
@@ -47,7 +48,7 @@ public class CreditScoring {
         BigDecimal denominator = pow.subtract(one);
         BigDecimal monthlyPayment = calcDto.getAmount().multiply(numerator).divide(denominator, MathContext.DECIMAL128).setScale(2, RoundingMode.HALF_UP);
 
-
+        result.setStatementId(UUID.randomUUID());
         result.setRequestedAmount(calcDto.getAmount());
         result.setTotalAmount(calcDto.getAmount());
         result.setIsSalaryClient(calcDto.getIsSalaryClient());

@@ -33,8 +33,8 @@ public class ScoringController {
             summary = "Расчет кредита",
             description = "Принимает данные для скоринга и возвращает параметры кредита"
     )
-    public CreditDto calculateCredit(@RequestBody @Parameter(description = "Данные для скоринга") @Valid ScoringDataDto data) {
-        log.info("Начало расчета кредита");
+    public CreditDto calculateCredit(@RequestBody  @Parameter(description = "Данные для скоринга") @Valid ScoringDataDto data) {
+        log.info("Начало расчета кредита. Тело запроса: {}", data);
         return scoringService.calculateCredit(data);
     }
 
@@ -44,7 +44,7 @@ public class ScoringController {
             description = "Позволяет рассчитать предварительные условия кредита"
     )
     public List<LoanOfferDto> calculatePreOffer(@RequestBody @Parameter(description = "Данные для прескориинга") @Valid LoanStatementRequestDto requestDto) {
-        log.info("Начало обработки условий займа");
+        log.info("Начало обработки условий займа. Тело запроса: {}", requestDto);
         return preScoringService.calculatePreOffer(requestDto);
     }
 

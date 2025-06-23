@@ -2,10 +2,7 @@ package calculatorApp.calculator.model.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -14,15 +11,15 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = {"passportSeries","passportNumber"})
 public class LoanStatementRequestDto {
-//    @Max(1)
     @Schema(description = "Сумма кредита", defaultValue = "200000")
     @NotNull(message = "Сумма обязательна для заполнения")
     @DecimalMin(value = "20000", inclusive = true, message = "сумма должна быть не менее 20000")
     private BigDecimal amount;
     @Schema(description = "Срок кредита (в месяцах)", defaultValue = "12")
     @NotNull(message = "Срок обязателен для заполнения")
-    @Min(value = 6, message = "Срок должен не иенее 6 месяцев")
+    @Min(value = 6, message = "Срок должен не менее 6 месяцев")
     private Integer term;
     @Schema(description = "Имя", defaultValue = "Ivan")
     @Size(min = 2, max = 30, message = "Имя должно быть от 2 до 30 латинских букв")

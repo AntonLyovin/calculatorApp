@@ -4,10 +4,7 @@ import calculatorApp.calculator.model.enumerated.Gender;
 import calculatorApp.calculator.model.enumerated.MartialStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -16,6 +13,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString(exclude = {"passportSeries","passportNumber","passportIssueDate"})
 public class ScoringDataDto {
      @Schema(description = "Сумма кредита", defaultValue = "200000")
      @NotNull(message = "Сумма обязательна для заполнения")
@@ -23,7 +21,7 @@ public class ScoringDataDto {
      private BigDecimal amount;
      @Schema(description = "Срок кредита (в месяцах)", defaultValue = "12")
      @NotNull(message = "Срок обязателен для заполнения")
-     @Min(value = 6, message = "Срок должен не иенее 6 месяцев")
+     @Min(value = 6, message = "Срок должен не менее 6 месяцев")
      private Integer term;
      @Schema(description = "Имя", defaultValue = "Ivan")
      @Size(min = 2, max = 30, message = "Имя должно быть от 2 до 30 латинских букв")

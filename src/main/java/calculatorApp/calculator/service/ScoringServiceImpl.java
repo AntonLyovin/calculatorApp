@@ -38,6 +38,7 @@ public class ScoringServiceImpl implements ScoringService {
 
         result.setAmount(data.getAmount());
         result.setTerm(data.getTerm());
+        result.setMonthlyPayment(monthlyPayment.setScale(2, RoundingMode.HALF_UP));
         result.setRate(performScoring(data).getRate());
         result.setPsk(calculateTotalCost(data.getAmount(), performScoring(data).getRate()));
         result.setIsSalaryClient(data.getIsSalaryClient());

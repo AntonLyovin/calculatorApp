@@ -1,23 +1,25 @@
 package calculatorApp.calculator.model.dto;
 
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
 @Data
-@NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @Getter
 @Setter
 public class LoanOfferDto {
-    private UUID statementId;
-    private BigDecimal requestedAmount;
-    private BigDecimal totalAmount;
-    private Integer term;
-    private BigDecimal monthlyPayment;
-    private BigDecimal rate;
-    private Boolean isInsuranceEnabled;
-    private Boolean isSalaryClient;
-
+     UUID statementId;
+     BigDecimal requestedAmount;
+     BigDecimal totalAmount;
+     Integer term;
+     BigDecimal monthlyPayment;
+     BigDecimal rate;
+     Boolean isInsuranceEnabled;
+     Boolean isSalaryClient;
+     public LoanOfferDto() {
+     }
 }

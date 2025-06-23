@@ -1,6 +1,7 @@
 package calculatorApp.calculator.service;
 
 import calculatorApp.calculator.model.dto.LoanOfferDto;
+import calculatorApp.calculator.model.dto.LoanStatementRequestDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,21 +26,26 @@ public class PreScoringServiceImpTest {
         MockitoAnnotations.openMocks(this);
         preScoringService = new PreScoringServiceImpl();
     }
+    private LoanStatementRequestDto createRequestDto(){
+        LoanStatementRequestDto requestDto = new LoanStatementRequestDto();
+        requestDto.setAmount( BigDecimal.valueOf(100000));
+        requestDto.setTerm(12);
+        requestDto.setFirstName("Иван");
+        requestDto.setLastName("Иванов");
+        requestDto.setMiddleName("Иванович");
+        requestDto.setEmail("test@example.com");
+        requestDto.setBirthdate(LocalDate.of(1990, 1, 1));
+        requestDto.setPassportSeries("4444");
+        requestDto.setPassportNumber("123456");
+        return  requestDto;
+    }
 
     @Test
     void calculatePreOffer_ShouldReturnSortedLoanOffers() {
-        BigDecimal amount = BigDecimal.valueOf(100000);
-        Integer term = 12;
-        String firstName = "Иван";
-        String lastName = "Иванов";
-        String middleName = "Иванович";
-        String email = "test@example.com";
-        LocalDate birthdate = LocalDate.of(1990, 1, 1);
-        String passportSeries = "4444";
-        String passportNumber = "123456";
+        LoanStatementRequestDto data = createRequestDto();
 
-        List<LoanOfferDto> offers = preScoringService.calculatePreOffer(amount, term, firstName, lastName, middleName,
-                email, birthdate, passportSeries, passportNumber);
+
+        List<LoanOfferDto> offers = preScoringService.calculatePreOffer(data);
 
         boolean someCondition = offers.stream().sorted().equals(offers);
         assertFalse(someCondition);
@@ -60,20 +66,11 @@ public class PreScoringServiceImpTest {
 
     @Test
     void testCalculatePreOffer_ReturnsCorrectOffers() {
-        // Входные параметры
-        BigDecimal amount = BigDecimal.valueOf(100000);
-        Integer term = 12; // 1 год
-        String firstName = "Иван";
-        String lastName = "Иванов";
-        String middleName = "Иванович";
-        String email = "test@example.com";
-        LocalDate birthdate = LocalDate.of(1990, 1, 1);
-        String passportSeries = "AB";
-        String passportNumber = "123456";
+        LoanStatementRequestDto data = createRequestDto();
 
-        List<LoanOfferDto> offers = preScoringService.calculatePreOffer(
-                amount, term, firstName, lastName, middleName,
-                email, birthdate, passportSeries, passportNumber);
+
+        List<LoanOfferDto> offers;
+        offers = preScoringService.calculatePreOffer(data);
 
         assertNotNull(offers);
         assertEquals(4, offers.size());

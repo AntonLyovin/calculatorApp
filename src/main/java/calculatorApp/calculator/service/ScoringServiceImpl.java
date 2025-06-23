@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static calculatorApp.calculator.util.ScoringLogic.*;
+import static calculatorApp.calculator.util.CreditScoring.*;
 
 @Service
 @ComponentScan

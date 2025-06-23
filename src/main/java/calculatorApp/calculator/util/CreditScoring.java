@@ -14,8 +14,8 @@ import java.time.LocalDate;
 import java.time.Period;
 
 @Slf4j
-public class ScoringLogic {
-    private ScoringLogic() {
+public class CreditScoring {
+    private CreditScoring() {
     }
 
     public static LoanOfferDto calculatePreScoring(CalcDto calcDto) {
@@ -31,6 +31,7 @@ public class ScoringLogic {
         if (calcDto.getIsSalaryClient()) {
             annualRate = annualRate.subtract(BigDecimal.valueOf(1));
         }
+        
 
         BigDecimal monthlyRate = annualRate.divide(BigDecimal.valueOf(12), MathContext.DECIMAL128).divide(BigDecimal.valueOf(100), MathContext.DECIMAL128).setScale(2, RoundingMode.HALF_UP);
 

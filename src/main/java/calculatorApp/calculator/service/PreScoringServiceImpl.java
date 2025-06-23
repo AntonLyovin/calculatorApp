@@ -3,7 +3,7 @@ package calculatorApp.calculator.service;
 import calculatorApp.calculator.model.dto.CalcDto;
 import calculatorApp.calculator.model.dto.LoanOfferDto;
 import calculatorApp.calculator.model.dto.LoanStatementRequestDto;
-import calculatorApp.calculator.util.ScoringLogic;
+import calculatorApp.calculator.util.CreditScoring;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +22,7 @@ public class PreScoringServiceImpl implements PreScoringService {
         List<CalcDto> calcDTOList = prepareDtoList(requestDto.getAmount(), requestDto.getTerm());
         log.info("Предоставление кредитных предложений");
         return calcDTOList.stream()
-                .map(ScoringLogic::calculatePreScoring)
+                .map(CreditScoring::calculatePreScoring)
                 .sorted(Comparator.comparing(LoanOfferDto::getRate))
                 .collect(Collectors.toList());
     }

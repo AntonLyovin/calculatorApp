@@ -8,6 +8,7 @@ import calculatorApp.calculator.service.PreScoringService;
 import calculatorApp.calculator.service.ScoringService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -19,7 +20,6 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @Validated
 @RequestMapping("/calculator")
 @Slf4j
@@ -33,8 +33,8 @@ public class ScoringController {
             summary = "Расчет кредита",
             description = "Принимает данные для скоринга и возвращает параметры кредита"
     )
-    public CreditDto calculateCredit(@RequestBody @Parameter(description = "Данные для скоринга") @Validated ScoringDataDto data) {
-        log.info("Начало расчета кредита{}");
+    public CreditDto calculateCredit(@RequestBody @Parameter(description = "Данные для скоринга") @Valid ScoringDataDto data) {
+        log.info("Начало расчета кредита");
         return scoringService.calculateCredit(data);
     }
 
@@ -43,8 +43,10 @@ public class ScoringController {
             summary = "Расчет кредита",
             description = "Позволяет рассчитать предварительные условия кредита"
     )
-    public List<LoanOfferDto> calculatePreOffer(@RequestBody @Parameter(description = "Данные для прескориинга") @Validated LoanStatementRequestDto requestDto) {
+    public List<LoanOfferDto> calculatePreOffer(@RequestBody @Parameter(description = "Данные для прескориинга") @Valid LoanStatementRequestDto requestDto) {
         log.info("Начало обработки условий займа");
         return preScoringService.calculatePreOffer(requestDto);
     }
+
+
 }
